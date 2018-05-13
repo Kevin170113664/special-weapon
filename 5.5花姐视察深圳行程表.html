@@ -1,0 +1,58 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load("current", {packages: ["timeline"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var container = document.getElementById('timetable');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+        var time = function (h, m) {
+            return new Date(0, 0, 0, h, m, 0)
+        };
+        dataTable.addColumn({type: 'string', id: 'Position'});
+        dataTable.addColumn({type: 'string', id: 'Name'});
+        dataTable.addColumn({type: 'date', id: 'Start'});
+        dataTable.addColumn({type: 'date', id: 'End'});
+        dataTable.addRows([
+            ['花姐', '执行神秘操作', time(8, 30), time(10, 30)],
+            ['花姐', '跟着逛深大，腾讯大厦', time(10, 30), time(12, 0)],
+            ['花姐', '吃午饭', time(12, 0), time(13, 0)],
+            ['花姐', '散步', time(13, 0), time(13, 30)],
+            ['花姐', '桌游吧打游戏', time(13, 30), time(17, 30)],
+            ['花姐', '吃晚饭', time(17, 30), time(18, 45)],
+            ['花姐', '回酒店', time(18, 45), time(20, 0)],
+            ['Kevin', '确保路线', time(9, 30), time(10, 30)],
+            ['Kevin', '带路逛深大，腾讯大厦', time(10, 30), time(12, 0)],
+            ['Kevin', '找餐厅', time(11, 30), time(12, 0)],
+            ['Kevin', '带去桂庙新村吃饭', time(12, 0), time(13, 0)],
+            ['Kevin', '带路', time(13, 0), time(13, 30)],
+            ['Kevin', '桌游吧打游戏', time(13, 30), time(17, 30)],
+            ['Kevin', '吃晚饭', time(17, 30), time(18, 45)],
+            ['Kevin', '回家', time(18, 45), time(19, 15)],
+            ['小胖', '通勤，确认桌游吧位置', time(9, 0), time(10, 30)],
+            ['小胖', '跟着逛深大，腾讯大厦', time(10, 30), time(12, 0)],
+            ['小胖', '吃午饭', time(12, 0), time(13, 0)],
+            ['小胖', '散步', time(13, 0), time(13, 30)],
+            ['小胖', '桌游吧打游戏', time(13, 30), time(17, 30)],
+            ['小胖', '找餐厅', time(17, 0), time(17, 30)],
+            ['小胖', '带路并吃晚饭', time(17, 30), time(18, 45)],
+            ['小胖', '回家', time(18, 45), time(20, 0)],
+            ['风速狗', '公交', time(10, 0), time(10, 30)],
+            ['风速狗', '跟着逛深大，腾讯大厦', time(10, 30), time(12, 0)],
+            ['风速狗', '吃午饭', time(12, 0), time(13, 0)],
+            ['风速狗', '散步', time(13, 0), time(13, 30)],
+            ['风速狗', '桌游吧打游戏', time(13, 30), time(17, 30)],
+            ['风速狗', '吃晚饭', time(17, 30), time(18, 45)],
+            ['风速狗', '回家', time(18, 45), time(19, 15)]
+        ]);
+
+        chart.draw(dataTable);
+    }
+</script>
+<head>
+    <title>花姐视察行程安排</title>
+</head>
+<div id="timetable" style="height: 500px;"></div>
+
