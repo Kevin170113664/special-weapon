@@ -5,12 +5,11 @@
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-        var container = document.getElementById('timetable');
-        var chart = new google.visualization.Timeline(container);
-        var dataTable = new google.visualization.DataTable();
-        var time = function (h, m) {
-            return new Date(0, 0, 0, h, m, 0)
-        };
+        const container = document.getElementById('timetable');
+        const chart = new google.visualization.Timeline(container);
+        const dataTable = new google.visualization.DataTable();
+        const time = (h, m) => new Date(0, 0, 0, h, m, 0);
+
         dataTable.addColumn({type: 'string', id: 'Position'});
         dataTable.addColumn({type: 'string', id: 'Name'});
         dataTable.addColumn({type: 'date', id: 'Start'});
