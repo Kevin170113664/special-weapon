@@ -1,28 +1,36 @@
 {
   "name": "Champion",
+  "img": "./icon/France.svg",
   "winners": [
     {
       "name": "Semi 1",
+      "img": "./icon/France.svg",
       "winners": [
         {
           "name": "Quarter 1",
+          "img": "./icon/Spain.svg",
           "winners": [
             {
-              "name": "A1"
+              "name": "A1",
+              "img": "./icon/Russia.svg"
             },
             {
-              "name": "B2"
+              "name": "B2",
+              "img": "./icon/Spain.svg"
             }
           ]
         },
         {
           "name": "Quarter 2",
+          "img": "./icon/France.svg",
           "winners": [
             {
-              "name": "C1"
+              "name": "C1",
+              "img": "./icon/France.svg"
             },
             {
-              "name": "D2"
+              "name": "D2",
+              "img": "./icon/Iceland.svg"
             }
           ]
         }
@@ -30,26 +38,33 @@
     },
     {
       "name": "Semi 2",
+      "img": "./icon/Belgium.svg",
       "winners": [
         {
           "name": "Quarter 3",
+          "img": "./icon/Brazil.svg",
           "winners": [
             {
-              "name": "E1"
+              "name": "E1",
+              "img": "./icon/Brazil.svg"
             },
             {
-              "name": "F2"
+              "name": "F2",
+              "img": "./icon/Mexico.svg"
             }
           ]
         },
         {
           "name": "Quarter 4",
+          "img": "./icon/Belgium.svg",
           "winners": [
             {
-              "name": "G1"
+              "name": "G1",
+              "img": "./icon/Belgium.svg"
             },
             {
-              "name": "H2"
+              "name": "H2",
+              "img": "./icon/Poland.svg"
             }
           ]
         }
@@ -59,26 +74,33 @@
   "challengers": [
     {
       "name": "Semi 3",
+      "img": "./icon/Argentina.svg",
       "challengers": [
         {
           "name": "Quarter 5",
+          "img": "./icon/Portugal.svg",
           "challengers": [
             {
-              "name": "B1"
+              "name": "B1",
+              "img": "./icon/Portugal.svg"
             },
             {
-              "name": "A2"
+              "name": "A2",
+              "img": "./icon/Uruguay.svg"
             }
           ]
         },
         {
           "name": "Quarter 6",
+          "img": "./icon/Argentina.svg",
           "challengers": [
             {
-              "name": "D1"
+              "name": "D1",
+              "img": "./icon/Argentina.svg"
             },
             {
-              "name": "C2"
+              "name": "C2",
+              "img": "./icon/Denmark.svg"
             }
           ]
         }
@@ -86,26 +108,33 @@
     },
     {
       "name": "Semi 4",
+      "img": "./icon/Germany.svg",
       "challengers": [
         {
           "name": "Quarter 7",
+          "img": "./icon/Germany.svg",
           "challengers": [
             {
-              "name": "F1"
+              "name": "F1",
+              "img": "./icon/Germany.svg"
             },
             {
-              "name": "E2"
+              "name": "E2",
+              "img": "./icon/Switzerland.svg"
             }
           ]
         },
         {
           "name": "Quarter 8",
+          "img": "./icon/England.svg",
           "challengers": [
             {
-              "name": "H1"
+              "name": "H1",
+              "img": "./icon/Colombia.svg"
             },
             {
-              "name": "G2"
+              "name": "G2",
+              "img": "./icon/England.svg"
             }
           ]
         }

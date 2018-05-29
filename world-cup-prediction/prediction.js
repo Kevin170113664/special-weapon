@@ -6,7 +6,7 @@ let i = 0;
 let duration = 500;
 let root;
 
-const getChildren = function (d) {
+const getChildren = (d) => {
     let i;
     const a = [];
     if (d.winners) for (i = 0; i < d.winners.length; i++) {
@@ -24,7 +24,7 @@ const getChildren = function (d) {
 
 const tree = d3.layout.tree().size([height, width]);
 
-const calcLeft = function (d) {
+const calcLeft = (d) => {
     let l = d.y;
     if (!d.isRight) {
         l = d.y - halfWidth;
@@ -32,7 +32,7 @@ const calcLeft = function (d) {
     }
     return {x: d.x, y: l};
 };
-const elbow = function (d) {
+const elbow = (d) => {
     const source = calcLeft(d.source);
     const target = calcLeft(d.target);
     let hy = (target.y - source.y) / 2;
@@ -51,21 +51,21 @@ const vis = d3
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("prediction.json", function (json) {
+d3.json("prediction.json", (json) => {
     root = json;
     root.x0 = height / 2;
     root.y0 = width / 2;
 
-    const t1 = d3.layout.tree().size([height, halfWidth]).children(function (d) {
+    const t1 = d3.layout.tree().size([height, halfWidth]).children((d) => {
             return d.winners;
         }),
-        t2 = d3.layout.tree().size([height, halfWidth]).children(function (d) {
+        t2 = d3.layout.tree().size([height, halfWidth]).children((d) => {
             return d.challengers;
         });
     t1.nodes(root);
     t2.nodes(root);
 
-    const rebuildChildren = function (node) {
+    const rebuildChildren = (node) => {
         node.children = getChildren(node);
         if (node.children) node.children.forEach(rebuildChildren);
     };
@@ -74,7 +74,7 @@ d3.json("prediction.json", function (json) {
     update(root);
 });
 
-const toArray = function (item, arr) {
+const toArray = (item, arr) => {
     arr = arr || [];
     let i = 0, l = item.children ? item.children.length : 0;
     arr.push(item);
@@ -84,49 +84,58 @@ const toArray = function (item, arr) {
     return arr;
 };
 
-function update(source) {
+const update = (source) => {
     // Compute the new tree layout.
     const nodes = toArray(source);
 
+    // Toggle children on click.
+    const click = (d) => {
+        if (d.children) {
+            d._children = d.children;
+            d.children = null;
+        } else {
+            d.children = d._children;
+            d._children = null;
+        }
+        update(source);
+    };
+
     // Normalize for fixed-depth.
-    nodes.forEach(function (d) {
+    nodes.forEach((d) => {
         d.y = d.depth * 180 + halfWidth;
     });
 
     // Update the nodes…
     const node = vis.selectAll("g.node")
-        .data(nodes, function (d) {
+        .data(nodes, (d) => {
             return d.id || (d.id = ++i);
         });
 
     // Enter any new nodes at the parent's previous position.
     const nodeEnter = node.enter().append("g")
         .attr("class", "node")
-        .attr("transform", function () {
+        .attr("transform", () => {
             return "translate(" + source.y0 + "," + source.x0 + ")";
         })
         .on("click", click);
 
-    nodeEnter.append("circle")
-        .attr("r", 1e-6)
-        .style("fill", function (d) {
-            return d._children ? "lightsteelblue" : "#fff";
-        });
+    nodeEnter.append("svg:image")
+        .attr("xlink:href", d => d.img)
+        .attr("x", () => -20)
+        .attr("y", () => -15)
+        .attr("height", 30)
+        .attr("width", 40);
 
     nodeEnter.append("text")
-        .attr("dy", function (d) {
-            return d.isRight ? 14 : -8;
-        })
+        .attr("dy", d => 25)
         .attr("text-anchor", "middle")
-        .text(function (d) {
-            return d.name;
-        })
+        .text(d => d.name)
         .style("fill-opacity", 1e-6);
 
     // Transition nodes to their new position.
     const nodeUpdate = node.transition()
         .duration(duration)
-        .attr("transform", function (d) {
+        .attr("transform", (d) => {
             p = calcLeft(d);
             return "translate(" + p.y + "," + p.x + ")";
         })
@@ -134,7 +143,7 @@ function update(source) {
 
     nodeUpdate.select("circle")
         .attr("r", 4.5)
-        .style("fill", function (d) {
+        .style("fill", (d) => {
             return d._children ? "lightsteelblue" : "#fff";
         });
 
@@ -144,7 +153,7 @@ function update(source) {
     // Transition exiting nodes to the parent's new position.
     const nodeExit = node.exit().transition()
         .duration(duration)
-        .attr("transform", function (d) {
+        .attr("transform", (d) => {
             p = calcLeft(d.parent || source);
             return "translate(" + p.y + "," + p.x + ")";
         })
@@ -158,14 +167,14 @@ function update(source) {
 
     // Update the links...
     const link = vis.selectAll("path.link")
-        .data(tree.links(nodes), function (d) {
+        .data(tree.links(nodes), (d) => {
             return d.target.id;
         });
 
     // Enter any new links at the parent's previous position.
     link.enter().insert("path", "g")
         .attr("class", "link")
-        .attr("d", function () {
+        .attr("d", () => {
             const o = {x: source.x0, y: source.y0};
             return connector({source: o, target: o});
         });
@@ -178,7 +187,7 @@ function update(source) {
     // Transition exiting nodes to the parent's new position.
     link.exit().transition()
         .duration(duration)
-        .attr("d", function (d) {
+        .attr("d", (d) => {
             const o = calcLeft(d.source || source);
             if (d.source.isRight) o.y -= halfWidth - (d.target.y - d.source.y);
             else o.y += halfWidth - (d.target.y - d.source.y);
@@ -187,21 +196,9 @@ function update(source) {
         .remove();
 
     // Stash the old positions for transition.
-    nodes.forEach(function (d) {
+    nodes.forEach((d) => {
         const p = calcLeft(d);
         d.x0 = p.x;
         d.y0 = p.y;
     });
-
-    // Toggle children on click.
-    function click(d) {
-        if (d.children) {
-            d._children = d.children;
-            d.children = null;
-        } else {
-            d.children = d._children;
-            d._children = null;
-        }
-        update(source);
-    }
-}
+};
