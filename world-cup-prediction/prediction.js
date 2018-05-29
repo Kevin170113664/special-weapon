@@ -1,10 +1,10 @@
-let margin = {top: 30, right: 10, bottom: 10, left: 10},
-    width = 1366 - margin.left - margin.right,
-    halfWidth = width / 2,
-    height = 500 - margin.top - margin.bottom,
-    i = 0,
-    duration = 500,
-    root;
+let margin = {top: 30, right: 10, bottom: 10, left: 10};
+let width = 1200 - margin.left - margin.right;
+let halfWidth = width / 2;
+let height = 600 - margin.top - margin.bottom;
+let i = 0;
+let duration = 500;
+let root;
 
 const getChildren = function (d) {
     let i;
@@ -22,8 +22,7 @@ const getChildren = function (d) {
     return a.length ? a : null;
 };
 
-const tree = d3.layout.tree()
-    .size([height, width]);
+const tree = d3.layout.tree().size([height, width]);
 
 const calcLeft = function (d) {
     let l = d.y;
@@ -33,7 +32,7 @@ const calcLeft = function (d) {
     }
     return {x: d.x, y: l};
 };
-const elbow = function (d, i) {
+const elbow = function (d) {
     const source = calcLeft(d.source);
     const target = calcLeft(d.target);
     let hy = (target.y - source.y) / 2;
@@ -44,7 +43,9 @@ const elbow = function (d, i) {
 };
 const connector = elbow;
 
-const vis = d3.select("#chart").append("svg")
+const vis = d3
+    .select("#chart")
+    .append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -93,7 +94,7 @@ function update(source) {
     });
 
     // Update the nodes…
-    var node = vis.selectAll("g.node")
+    const node = vis.selectAll("g.node")
         .data(nodes, function (d) {
             return d.id || (d.id = ++i);
         });
@@ -101,7 +102,7 @@ function update(source) {
     // Enter any new nodes at the parent's previous position.
     const nodeEnter = node.enter().append("g")
         .attr("class", "node")
-        .attr("transform", function (d) {
+        .attr("transform", function () {
             return "translate(" + source.y0 + "," + source.x0 + ")";
         })
         .on("click", click);
@@ -164,7 +165,7 @@ function update(source) {
     // Enter any new links at the parent's previous position.
     link.enter().insert("path", "g")
         .attr("class", "link")
-        .attr("d", function (d) {
+        .attr("d", function () {
             const o = {x: source.x0, y: source.y0};
             return connector({source: o, target: o});
         });
