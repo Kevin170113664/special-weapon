@@ -1,36 +1,36 @@
 {
   "name": "Champion",
-  "img": "./icon/France.svg",
+  "img": "./world-cup-prediction/icon/France.svg",
   "winners": [
     {
       "name": "Semi 1",
-      "img": "./icon/France.svg",
+      "img": "./world-cup-prediction/icon/France.svg",
       "winners": [
         {
           "name": "Quarter 1",
-          "img": "./icon/Spain.svg",
+          "img": "./world-cup-prediction/icon/Spain.svg",
           "winners": [
             {
               "name": "A1",
-              "img": "./icon/Russia.svg"
+              "img": "./world-cup-prediction/icon/Russia.svg"
             },
             {
               "name": "B2",
-              "img": "./icon/Spain.svg"
+              "img": "./world-cup-prediction/icon/Spain.svg"
             }
           ]
         },
         {
           "name": "Quarter 2",
-          "img": "./icon/France.svg",
+          "img": "./world-cup-prediction/icon/France.svg",
           "winners": [
             {
               "name": "C1",
-              "img": "./icon/France.svg"
+              "img": "./world-cup-prediction/icon/France.svg"
             },
             {
               "name": "D2",
-              "img": "./icon/Iceland.svg"
+              "img": "./world-cup-prediction/icon/Iceland.svg"
             }
           ]
         }
@@ -38,33 +38,33 @@
     },
     {
       "name": "Semi 2",
-      "img": "./icon/Belgium.svg",
+      "img": "./world-cup-prediction/icon/Belgium.svg",
       "winners": [
         {
           "name": "Quarter 3",
-          "img": "./icon/Brazil.svg",
+          "img": "./world-cup-prediction/icon/Brazil.svg",
           "winners": [
             {
               "name": "E1",
-              "img": "./icon/Brazil.svg"
+              "img": "./world-cup-prediction/icon/Brazil.svg"
             },
             {
               "name": "F2",
-              "img": "./icon/Mexico.svg"
+              "img": "./world-cup-prediction/icon/Mexico.svg"
             }
           ]
         },
         {
           "name": "Quarter 4",
-          "img": "./icon/Belgium.svg",
+          "img": "./world-cup-prediction/icon/Belgium.svg",
           "winners": [
             {
               "name": "G1",
-              "img": "./icon/Belgium.svg"
+              "img": "./world-cup-prediction/icon/Belgium.svg"
             },
             {
               "name": "H2",
-              "img": "./icon/Poland.svg"
+              "img": "./world-cup-prediction/icon/Poland.svg"
             }
           ]
         }
@@ -74,33 +74,33 @@
   "challengers": [
     {
       "name": "Semi 3",
-      "img": "./icon/Argentina.svg",
+      "img": "./world-cup-prediction/icon/Argentina.svg",
       "challengers": [
         {
           "name": "Quarter 5",
-          "img": "./icon/Portugal.svg",
+          "img": "./world-cup-prediction/icon/Portugal.svg",
           "challengers": [
             {
               "name": "B1",
-              "img": "./icon/Portugal.svg"
+              "img": "./world-cup-prediction/icon/Portugal.svg"
             },
             {
               "name": "A2",
-              "img": "./icon/Uruguay.svg"
+              "img": "./world-cup-prediction/icon/Uruguay.svg"
             }
           ]
         },
         {
           "name": "Quarter 6",
-          "img": "./icon/Argentina.svg",
+          "img": "./world-cup-prediction/icon/Argentina.svg",
           "challengers": [
             {
               "name": "D1",
-              "img": "./icon/Argentina.svg"
+              "img": "./world-cup-prediction/icon/Argentina.svg"
             },
             {
               "name": "C2",
-              "img": "./icon/Denmark.svg"
+              "img": "./world-cup-prediction/icon/Denmark.svg"
             }
           ]
         }
@@ -108,33 +108,33 @@
     },
     {
       "name": "Semi 4",
-      "img": "./icon/Germany.svg",
+      "img": "./world-cup-prediction/icon/Germany.svg",
       "challengers": [
         {
           "name": "Quarter 7",
-          "img": "./icon/Germany.svg",
+          "img": "./world-cup-prediction/icon/Germany.svg",
           "challengers": [
             {
               "name": "F1",
-              "img": "./icon/Germany.svg"
+              "img": "./world-cup-prediction/icon/Germany.svg"
             },
             {
               "name": "E2",
-              "img": "./icon/Switzerland.svg"
+              "img": "./world-cup-prediction/icon/Switzerland.svg"
             }
           ]
         },
         {
           "name": "Quarter 8",
-          "img": "./icon/England.svg",
+          "img": "./world-cup-prediction/icon/England.svg",
           "challengers": [
             {
               "name": "H1",
-              "img": "./icon/Colombia.svg"
+              "img": "./world-cup-prediction/icon/Colombia.svg"
             },
             {
               "name": "G2",
-              "img": "./icon/England.svg"
+              "img": "./world-cup-prediction/icon/England.svg"
             }
           ]
         }

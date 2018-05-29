@@ -51,7 +51,7 @@ const vis = d3
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("prediction.json", (json) => {
+d3.json("./world-cup-prediction/prediction.json", (json) => {
     root = json;
     root.x0 = height / 2;
     root.y0 = width / 2;
